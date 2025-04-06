@@ -7,7 +7,7 @@ app.use(express.json());
 
 app.post('/create', (req, res) => {
     let rbody = req.body;
-    if(rbody.size <= 60 && rbody.margin <= 15 && rbody.border <= 10 && rbody.padding <= 8 && typeof(rbody.text) == 'string' && rbody.text.length <= 50) {
+    if(rbody.size <= 60 && rbody.margin <= 15 && rbody.border <= 10 && rbody.padding <= 8 && (typeof(rbody.text) == 'string' ) && rbody.text.length <= 50) {
         let newElement = model.createElement(rbody.size, rbody.margin, rbody.border, rbody.padding, rbody.text);
         res.status(200).json(newElement);
     } else {

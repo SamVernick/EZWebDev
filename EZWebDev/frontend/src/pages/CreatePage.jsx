@@ -1,6 +1,7 @@
 import '../App.css'
 
-
+//background color, table?!
+//onclick for function that will change something
 function CreatePage(){
     return(
         <div className='create-page'>
@@ -9,7 +10,7 @@ function CreatePage(){
             <button className='btn btn-primary'>Create Textbox</button>
             <label for="cbox">Input Text</label>
             <input type="text" id="cbox" name="cbox"></input><br></br>
-        </div>
+        </div>  
     )
 }
 

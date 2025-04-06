@@ -1,7 +1,6 @@
 import '../App.css'
 import { useState } from 'react'
 
-
 function CreatePage(){
     const [size, setSize] = useState(0);
     const [margin, setMargin] = useState(0);
@@ -42,7 +41,7 @@ function CreatePage(){
         }
 
         try {
-            const response = await fetch(`https://localhost:3000/create/3${createdElementID}`, {
+            const response = await fetch(`https://localhost:3000/create/${createdElementID}`, {
                method: 'PUT',
                headers: {
                    'Content-Type': 'application/json'

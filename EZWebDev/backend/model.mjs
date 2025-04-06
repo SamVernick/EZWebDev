@@ -1,8 +1,8 @@
 import elements from './data/elements.mjs';
 import Element from './element.mjs'; //the class for the element being implemented
 
-function createElement(size, margin, border, padding) {
-    element = new Element(size, margin, border, padding);
+function createElement(size, margin, border, padding, text) {
+    element = new Element(size, margin, border, padding, text);
     elements.push(element);
     return element;
 }
@@ -11,11 +11,12 @@ function getElement(id) {
     return elements.find(element => element.id == id);
 }
 
-function updateElement(ID, size, margin, border, padding) {
+function updateElement(ID, size, margin, border, padding, text) {
     ID.size = size;
     ID.margin = margin;
     ID.border = border;
     ID.padding = padding;
+    ID.text = text;
     return ID;
 }
 

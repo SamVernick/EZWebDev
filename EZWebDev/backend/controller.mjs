@@ -1,0 +1,29 @@
+import express from 'express';
+import * as model from './model.mjs';
+const app = express();
+PORT = 3000;
+
+app.post('/create', (req, res) => {
+    let rbody = req.body;
+    if(rbody.size <= 60, rbody.margin <= 15, rbody.border <= 10, rbody.padding <= 8) {
+        let newElement = createElement(rbody.size, rbody.margin, rbody.border, rbody.padding);
+        res.status(200).json(newElement);
+    }
+});
+
+app.get('/create', (req, res) => {
+
+});
+
+app.put('/create/:id', (req,res) => {
+
+});
+
+app.delete('/create/:id', (req,res) => {
+
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
+});
+

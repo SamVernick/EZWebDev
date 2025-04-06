@@ -1,11 +1,14 @@
 import express from 'express';
 import * as model from './model.mjs';
+import cors from'cors';
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cors());
 
-app.post('/create', (req, res) => {
+
+app.post('/', (req, res) => {
     let rbody = req.body;
     if(rbody.size <= 60 && rbody.margin <= 15 && rbody.border <= 10 && rbody.padding <= 8 && (typeof(rbody.text) == 'string' ) && rbody.text.length <= 50) {
         let newElement = model.createElement(rbody.size, rbody.margin, rbody.border, rbody.padding, rbody.text);
@@ -15,7 +18,7 @@ app.post('/create', (req, res) => {
     }
 });
 
-app.get('/create', (req, res) => {
+app.get('/', (req, res) => {
     let element = model.retrieveElement(req.query.text);
     if(element != null) {
         res.status(200).json(element);
@@ -24,7 +27,7 @@ app.get('/create', (req, res) => {
     }
 });
 
-app.get('/create/:id', (req, res) => {
+app.get('/:id', (req, res) => {
     let ID = model.getElement(req.params.id);
     if(ID) {
         res.status(200).json(ID);
@@ -33,7 +36,7 @@ app.get('/create/:id', (req, res) => {
     }
 });
 
-app.put('/create/:id', (req, res) => {
+app.put('/:id', (req, res) => {
     const ID = model.getElement(req.params.id);
     let rbody = req.body;
     if(rbody.size > 60  &&rbody.margin > 15 && rbody.border > 10 && rbody.padding > 8 && typeof(rbody.text) != 'string' && rbody.text.length > 50) {
@@ -46,7 +49,7 @@ app.put('/create/:id', (req, res) => {
     }
 });
 
-app.delete('/create/:id', (req, res) => {
+app.delete('/:id', (req, res) => {
     const element = model.getElement(req.params.id);
     if(element) {
         model.deleteElement(element);

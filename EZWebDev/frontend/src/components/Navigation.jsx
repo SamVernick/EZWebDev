@@ -1,10 +1,17 @@
-import {Link} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 
 function Navigation(){
+    const location = useLocation();
+    const path = location.pathname;
+    
     return (
         <nav className="app-nav">
-            <Link to="/">Homepage </Link>
-            <Link to="/create">Create </Link>
+            {path === '/' && (
+                <Link to="/create">Create </Link>
+            )}
+            {path === '/create' && (
+                <Link to="/">Home</Link>
+            )}
         </nav>
     )
 }

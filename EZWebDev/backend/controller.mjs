@@ -15,6 +15,15 @@ app.post('/create', (req, res) => {
     }
 });
 
+app.get('/create', (req, res) => {
+    let element = model.retrieveElement(req.query.text);
+    if(element != null) {
+        res.status(200).json(element);
+    } else {
+        res.status(200).json();
+    }
+});
+
 app.get('/create/:id', (req, res) => {
     let ID = model.getElement(req.params.id);
     if(ID) {

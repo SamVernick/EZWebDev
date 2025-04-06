@@ -7,11 +7,19 @@ function createElement(size, margin, border, padding, text) {
     return element;
 }
 
+function retrieveElement(text) {
+    if(text) {
+        return elements.filter(element => element.text == text);
+    }
+    return elements;
+}
+
 function getElement(id) {
     return elements.find(element => element.id == id);
 }
 
 function updateElement(ID, size, margin, border, padding, text) {
+    //ID = getElement(ID.id);
     ID.size = size;
     ID.margin = margin;
     ID.border = border;
@@ -26,4 +34,4 @@ function deleteElement(element) {
 }
 
 
-export{ createElement, getElement, updateElement, deleteElement};
+export{ createElement, retrieveElement, getElement, updateElement, deleteElement};

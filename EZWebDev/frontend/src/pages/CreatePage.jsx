@@ -11,14 +11,12 @@ function CreatePage(){
 
     const createNew = async (e) => {
         e.preventDefault();
-        const newElement = { size, margin, border, padding };
+        const newElement = {size, margin, border, padding, text};
 
         try {
-            const response = await fetch('http://localhost:3000/create', {
+            const response = await fetch('http://localhost:3000/', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(newElement),
             });
             if (response.ok) {
@@ -41,11 +39,9 @@ function CreatePage(){
         }
 
         try {
-            const response = await fetch(`https://localhost:3000/create/${createdElementID}`, {
+            const response = await fetch(`https://localhost:3000/${createdElementID}`, {
                method: 'PUT',
-               headers: {
-                   'Content-Type': 'application/json'
-               },
+               headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ text }), 
             });
             if(response.ok) {
@@ -57,13 +53,18 @@ function CreatePage(){
         } catch (error) {
             console.error('Error:', error);
         }
+    };
+
+    function displayImage() {
+        type="image"
+        src="./assets/code.svg"
     }
 
     return(
         <div className="create-page">
             <h2>Create Page</h2>
             <p>Let's first try to create a new text element! Below me are some input fields for you to define!</p>
-            <form onSubmit={createNew} className="create-text">
+            <form className="create-text">
                 <label className="create-label">
                     Text Size: This determines the size, in pixels (px) of the text.
                     <input
@@ -98,6 +99,47 @@ function CreatePage(){
                         value={padding}
                         onChange={(e) => setPadding(e.target.value)}
                     />
+                </label>
+                <br></br>
+                <label>
+                    Enter Text:
+                    <input
+                        type="text"
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                    />
+                </label>
+                <br></br>
+                <label>
+                    <input
+                        type="image"
+                        src="./assets/change_border.webp"
+                    />
+                    This code allows for the user to change the size in pixels of our text. Notice how the setSize built in function is called. 
+                </label>
+                <br></br>
+                <label>
+                    <input
+                        type="image"
+                        src="./assets/change_margins.webp"
+                    />
+                    This function here allows the user to change the padding associated with the box. The padding is termed in pixels, and is used to add space into our element.
+                </label>
+                <br></br>
+                <label>
+                    <input
+                        type="image"
+                        src="./assets/change_padding.webp"
+                    />
+                    This function is used to change the border, or size of an element. This is important because it is used to achieve a visual effect of how big an element should be in pixels.
+                </label>
+                <br></br>
+                <label>
+                    <input
+                        type="image"
+                        src="./assets/change_label.webp"
+                    />
+                    This allows us to change our margins around an element. This is important for providing space around elements, since that allows us to organize our elements in a visual way so they are displayed in an appropriate order. 
                 </label>
                 <br></br>
                 <button type="submit" className="create-button">Create Element</button>

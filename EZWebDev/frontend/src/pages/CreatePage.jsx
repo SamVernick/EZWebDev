@@ -1,7 +1,6 @@
 import '../App.css'
 import { useState } from 'react'
 
-
 function CreatePage(){
     const [size, setSize] = useState(0);
     const [margin, setMargin] = useState(0);
